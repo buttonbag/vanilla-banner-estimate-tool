@@ -24,6 +24,15 @@
         form input {
             width: 50px;
         }
+        form span.total {
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+        form p.days {
+            font-weight: 600;
+            font-size: 1.2em;
+            color: red;
+        }
     </style>
     
 </head>
@@ -40,25 +49,27 @@
             <input type="tel" name="partners" id="partners" autocomplete="off" />
         </div>
         <div>
-            Total Ads <span class="total"></span>
+            Total Ads <span class="total">0</span>
         </div>
         <div>
             initial ad takes the longest ~2 days including bug fixes
         </div>
+        <hr>
         <div>
             <p>5 ad units per 1 day</p>
-            <p>days = ((total ads - 1) / 5 ads) + 2</p>
-            <p class="days"></p>
+            <p>days = ((total ads - 1) / 5 ads) + 2 days</p>
+            <p class="days">0</p>
         </div>    
+        <hr>
 
         <div>
-            make the very first 300x250 for approval we would need maybe 2-3 days. 
+            Make the first size for approval we would need maybe ~2 days.
         </div>
         <div>
-            Once that is approved, we need 1 more day to create the other 4 300x250s for approval.            
+            Once first size is approved, we need 1 more day to create the first of each partners for approval.            
         </div>
         <div>
-            Another 3 days to resize the other 15.
+            Another __ days to resize the other sizes.
         </div>
         <div>
             IR of first 300x250 - 3 days <br>
