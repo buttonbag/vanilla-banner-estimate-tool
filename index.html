@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Estimate Tool</title>
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        form {
+            max-width: 600px;
+            min-width: 300px;
+        }
+        form div {
+            display: flex;
+            flex: 1 1 auto;
+            width: 100%;
+            justify-content: space-between;
+            padding: 4px 0;
+        }
+        form input {
+            width: 50px;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <form action="">
+        <h1>Banner Estimator</h1>
+        <div>
+            How many ads per partner?
+            <input type="tel" name="adsPerPartner" id="adsPerPartner" autocomplete="off" />
+        </div>
+        <div>
+            How many partners?
+            <input type="tel" name="partners" id="partners" autocomplete="off" />
+        </div>
+        <div>
+            Total Ads <span class="total"></span>
+        </div>
+        <div>
+            initial ad takes the longest ~2 days including bug fixes
+        </div>
+        <div>
+            <p>5 ad units per 1 day</p>
+            <p>days = ((total ads - 1) / 5 ads) + 2</p>
+            <p class="days"></p>
+        </div>    
+
+        <div>
+            make the very first 300x250 for approval we would need maybe 2-3 days. 
+        </div>
+        <div>
+            Once that is approved, we need 1 more day to create the other 4 300x250s for approval.            
+        </div>
+        <div>
+            Another 3 days to resize the other 15.
+        </div>
+        <div>
+            IR of first 300x250 - 3 days <br>
+            IR of all 5 300z250s - 1 day <br>
+            Review remaining 15 - 3 days 
+        </div>
+        <div>
+            Total time 7 days - not including time waiting for feedback
+        </div>
+    </form>
+    
+</body>
+
+<script>
+    
+    function handleBlur() {
+        const adsPerPartner = document.querySelector('#adsPerPartner');
+        const partners = document.querySelector('#partners');
+        const totalSpan = document.querySelector('.total');
+        const daysSpan = document.querySelector('.days');
+        let total = parseInt(adsPerPartner.value) * parseInt(partners.value);
+        // let daysTotal;
+        let daysTotal = ((total - 1) / 5) + 2;
+        
+        if(!total) {
+            totalSpan.textContent = '0';
+            daysTotal = '0';
+        } else {
+            totalSpan.textContent = total;
+            daysSpan.textContent = daysTotal;
+        }
+
+
+        // alert('works!');
+    }
+    
+    adsPerPartner.addEventListener('blur', handleBlur);
+    partners.addEventListener('blur', handleBlur);
+    
+</script>
+</html>
