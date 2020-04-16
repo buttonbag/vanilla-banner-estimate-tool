@@ -27,6 +27,20 @@
             justify-content: space-between;
             align-items: center;
             padding: 4px 0;
+            /* flex-wrap: wrap; */
+        }
+        form div.checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        form div.check {
+            display: flex;
+            max-width: 120px;
+            justify-content: flex-start;
+        }
+        form div.check input {
+            width: 20px;
         }
         form input {
             width: 50px;
@@ -47,6 +61,32 @@
     
     <form action="">
         <h1>Banner Estimator</h1>
+        <div class="checkboxes">
+            <div class="check">
+                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
+            </div>
+            <div class="check">
+                <input type="checkbox" name="ad_160x600" id="ad_160x600"> 160x60
+            </div>
+            <div class="check">
+                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
+            </div>
+            <div class="check">
+                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
+            </div>
+            <div class="check">
+                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
+            </div>
+            <div class="check">
+                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
+            </div>
+            <div class="check">
+                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
+            </div>
+            <div class="check">
+                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
+            </div>
+        </div>
         <div>
             How many ads per partner?
             <input type="tel" name="adsPerPartner" id="adsPerPartner" autocomplete="off" />
@@ -91,7 +131,8 @@
 </body>
 
 <script>
-    
+    const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+
     function handleBlur() {
         const adsPerPartner = document.querySelector('#adsPerPartner');
         const partners = document.querySelector('#partners');
@@ -104,11 +145,11 @@
             daysTotal = '0';
             totalSpan.textContent = '0';
         } else {
-            totalSpan.innerHTML = total;
-            daysSpan.innerHTML = daysTotal;
+            totalSpan.textContent = total;
+            daysSpan.textContent = daysTotal;
         }
 
-        console.log(daysSpan);
+        console.log(checked);
 
         // alert('works!');
     }
