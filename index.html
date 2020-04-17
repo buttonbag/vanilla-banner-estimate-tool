@@ -61,53 +61,27 @@
     
     <form action="">
         <h1>Banner Estimator</h1>
-        <div class="checkboxes">
-            <div class="check">
-                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
-            </div>
-            <div class="check">
-                <input type="checkbox" name="ad_160x600" id="ad_160x600"> 160x60
-            </div>
-            <div class="check">
-                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
-            </div>
-            <div class="check">
-                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
-            </div>
-            <div class="check">
-                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
-            </div>
-            <div class="check">
-                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
-            </div>
-            <div class="check">
-                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
-            </div>
-            <div class="check">
-                <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
-            </div>
-        </div>
         <hr>
-        <div>
-            How many creatives / concepts?
-            <input type="tel" name="creatives" id="creatives" autocomplete="off" />
-        </div>
         <div>
             How many ads per?
-            <input type="tel" name="adsPerPartner" id="adsPerPartner" autocomplete="off" />
+            <input type="tel" name="adsPer" id="adsPer" autocomplete="off" value="5" />
         </div>
         <div>
-            How many partners?
-            <input type="tel" name="partners" id="partners" autocomplete="off" value="1"/>
+            How many creatives/partners?
+            <input type="tel" name="creatives" id="creatives" autocomplete="off" value="1"/>
         </div>
         <div>
-            Total Ads <span class="total">0</span>
+            Total Ads <span class="totalAds">0</span>
         </div>        
-        <p>
-            initial ad takes the longest ~2 days including bug discovery and fixes
-        </p>        
         <hr>
+        <p>initial ad takes ~2 days including bug discovery and fixes</p>        
         <div>
+            <p>first set of ads</p>
+            <p>2 originals per day</p>
+            <span class="firstSetDaysDisplay">0</span>
+        </div>
+        <div>
+            <p>Total Days</p>
             <p>5 ad units per 1 day</p>
             <p class="days">0 days</p>
         </div>    
@@ -117,7 +91,7 @@
             Make the first size for approval we would need maybe ~2 days.
         </div>
         <div>
-            Once first size is approved, we need 1 more day to create the first of each partners for approval.            
+            Once first size is approved, we need 1 more day to create the first of each creatives for approval.            
         </div>
         <div>
             Another __ days to resize the other sizes.
@@ -135,49 +109,55 @@
 </body>
 
 <script>
-    const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+    // const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
 
     function handleBlur() {
+        const adsPer = parseInt(document.querySelector('#adsPer').value);
         const creatives = parseInt(document.querySelector('#creatives').value);
-        const adsPerPartner = parseInt(document.querySelector('#adsPerPartner').value);
-        const partners = parseInt(document.querySelector('#partners').value);
-        const totalSpan = document.querySelector('.total');
-        const daysSpan = document.querySelector('.days');
-        let totalAds = adsPerPartner * partners;
         
-        let daysTotal = ((totalAds - 1) / 5) + 2 + ' days';
+        const firstSetDays = ((adsPer - 1) / 2); // 2 originals per day
+        const restOfAds = ((adsPer * creatives) - adsPer); //ads minus first set
+        const restOfAdsDays = (restOfAds / 5);
 
-        /* 
+        // let totalDays = ((totalAds - 1) / 5) + 2 + ' days';
+        let totalDays = ((restOfAdsDays + firstSetDays) + 2) + ' days';
+
+        const totalDisplay = document.querySelector('.totalAds');
+        const firstSetDaysDisplay = document.querySelector('.firstSetDaysDisplay');
+        const daysDisplay = document.querySelector('.days');
+        let totalAds = adsPer * creatives;
+
+        /*  ===FORMULA===
             firstSize = 2days;
-            firstSet = (ads - firstSize / 2days);
+            firstSetDays = ((adsPer - firstSize) / 2days); // 2 originals per day
 
-            restOfAds = ((ads x creatives) - ads); 
+            restOfAds = ((adsPer x creatives) - adsPer); //ads minus first set
             restOfAdsDays = (restOfAds / 5);
 
-
-            totalDays = ((restOfAdsDays + firstSet) + firstSize);
-
+            totalDays = ((restOfAdsDays + firstSetDays) + firstSize);
+            ===FORMULA=== 
         */
 
         
         if(!totalAds) {
-            daysTotal = '0';
-            totalSpan.textContent = '0';
-            daysSpan.textContent = daysTotal;
+            totalDays = '0';
+            totalDisplay.textContent = '0';
+            firstSetDaysDisplay.textContent = '0';
+            daysDisplay.textContent = totalDays;
         } else {
-            daysTotal;
-            totalSpan.textContent = totalAds;
-            daysSpan.textContent = daysTotal;
+            totalDays;
+            totalDisplay.textContent = totalAds;
+            firstSetDaysDisplay.textContent = firstSetDays;
+            daysDisplay.textContent = totalDays;
         }
 
-        console.log(checked);
-
-        // alert('works!');
     }
     
     
-    adsPerPartner.addEventListener('blur', handleBlur);
-    partners.addEventListener('blur', handleBlur);
+    adsPer.addEventListener('change', handleBlur);
+    creatives.addEventListener('change', handleBlur);
+
+    handleBlur();
     
 </script>
 </html>
