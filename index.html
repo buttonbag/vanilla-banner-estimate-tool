@@ -87,8 +87,13 @@
                 <input type="checkbox" name="ad_300x250" id="ad_300x250"> 300x250
             </div>
         </div>
+        <hr>
         <div>
-            How many ads per partner?
+            How many creatives / concepts?
+            <input type="tel" name="creatives" id="creatives" autocomplete="off" />
+        </div>
+        <div>
+            How many ads per?
             <input type="tel" name="adsPerPartner" id="adsPerPartner" autocomplete="off" />
         </div>
         <div>
@@ -97,15 +102,14 @@
         </div>
         <div>
             Total Ads <span class="total">0</span>
-        </div>
-        <div>
-            initial ad takes the longest ~2 days including bug fixes
-        </div>
+        </div>        
+        <p>
+            initial ad takes the longest ~2 days including bug discovery and fixes
+        </p>        
         <hr>
         <div>
             <p>5 ad units per 1 day</p>
-            <p>days = ((total ads - 1) / 5 ads) + 2 days</p>
-            <p class="days">0</p>
+            <p class="days">0 days</p>
         </div>    
         <hr>
 
@@ -120,7 +124,7 @@
         </div>
         <div>
             IR of first 300x250 - 3 days <br>
-            IR of all 5 300z250s - 1 day <br>
+            IR of all 5 300x250s - 1 day <br>
             Review remaining 15 - 3 days 
         </div>
         <div>
@@ -134,18 +138,35 @@
     const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
 
     function handleBlur() {
-        const adsPerPartner = document.querySelector('#adsPerPartner');
-        const partners = document.querySelector('#partners');
+        const creatives = parseInt(document.querySelector('#creatives').value);
+        const adsPerPartner = parseInt(document.querySelector('#adsPerPartner').value);
+        const partners = parseInt(document.querySelector('#partners').value);
         const totalSpan = document.querySelector('.total');
         const daysSpan = document.querySelector('.days');
-        let total = parseInt(adsPerPartner.value) * parseInt(partners.value);
-        let daysTotal = ((total - 1) / 5) + 2;
+        let totalAds = adsPerPartner * partners;
         
-        if(!total) {
+        let daysTotal = ((totalAds - 1) / 5) + 2 + ' days';
+
+        /* 
+            firstSize = 2days;
+            firstSet = (ads - firstSize / 2days);
+
+            restOfAds = ((ads x creatives) - ads); 
+            restOfAdsDays = (restOfAds / 5);
+
+
+            totalDays = ((restOfAdsDays + firstSet) + firstSize);
+
+        */
+
+        
+        if(!totalAds) {
             daysTotal = '0';
             totalSpan.textContent = '0';
+            daysSpan.textContent = daysTotal;
         } else {
-            totalSpan.textContent = total;
+            daysTotal;
+            totalSpan.textContent = totalAds;
             daysSpan.textContent = daysTotal;
         }
 
@@ -153,6 +174,7 @@
 
         // alert('works!');
     }
+    
     
     adsPerPartner.addEventListener('blur', handleBlur);
     partners.addEventListener('blur', handleBlur);
