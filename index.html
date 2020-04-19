@@ -61,14 +61,20 @@
     
     <form action="">
         <h1>Banner Estimator</h1>
+        <div>
+            <label><input type="checkbox" name="" id="">300x250</label>
+            <label><input type="checkbox" name="" id="">160x600</label>
+            <label><input type="checkbox" name="" id="">300x600</label>
+            <label><input type="checkbox" name="" id="">728x90</label>
+        </div>
         <hr>
         <div>
             How many ads per?
-            <input type="tel" name="adsPer" id="adsPer" autocomplete="off" value="5" />
+            <input type="tel" name="adsPer" id="adsPer" autocomplete="off" />
         </div>
         <div>
             How many creatives/partners?
-            <input type="tel" name="creatives" id="creatives" autocomplete="off" value="1"/>
+            <input type="tel" name="creatives" id="creatives" autocomplete="off" />
         </div>
         <div>
             Total Ads <span class="totalAds">0</span>
@@ -86,7 +92,7 @@
             <p class="days">0 days</p>
         </div>    
         <hr>
-
+        
         <div>
             Make the first size for approval we would need maybe ~2 days.
         </div>
@@ -109,35 +115,45 @@
 </body>
 
 <script>
-    // const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-
+    const adsPer = document.querySelector('#adsPer');
+    const creatives = document.querySelector('#creatives');
+    // const adsPer = parseInt(document.querySelector('#adsPer').value); 
+    // const creatives = parseInt(document.querySelector('#creatives').value);
+    /* don't know why but original const declarations throws error?? */
+    
+    const checks = document.querySelectorAll('input[type="checkbox"]');
+    // const counter = document.querySelector('#counter');
+    let count = 0;
+    
+    
+    function countChecked() {
+        if(this.checked) {
+            count++;
+            // counter.value = count;
+            console.log('checked ' + count);
+        } else if(!this.checked) {
+            count--;
+            console.log('checked ' + count);
+            // counter.value = count;
+        }
+    }
+    
+    for (i = 0; i < checks.length; i++) {
+        checks[i].addEventListener('change', countChecked);
+    }
+    
     function handleBlur() {
-        const adsPer = parseInt(document.querySelector('#adsPer').value);
-        const creatives = parseInt(document.querySelector('#creatives').value);
-        
-        const firstSetDays = ((adsPer - 1) / 2); // 2 originals per day
-        const restOfAds = ((adsPer * creatives) - adsPer); //ads minus first set
+        const firstSetDays = ((adsPer.value - 1) / 2); // 2 originals per day
+        const restOfAds = ((adsPer.value * creatives.value) - adsPer.value); //ads minus first set
         const restOfAdsDays = (restOfAds / 5);
-
+        
         // let totalDays = ((totalAds - 1) / 5) + 2 + ' days';
         let totalDays = ((restOfAdsDays + firstSetDays) + 2) + ' days';
-
+        
         const totalDisplay = document.querySelector('.totalAds');
         const firstSetDaysDisplay = document.querySelector('.firstSetDaysDisplay');
         const daysDisplay = document.querySelector('.days');
-        let totalAds = adsPer * creatives;
-
-        /*  ===FORMULA===
-            firstSize = 2days;
-            firstSetDays = ((adsPer - firstSize) / 2days); // 2 originals per day
-
-            restOfAds = ((adsPer x creatives) - adsPer); //ads minus first set
-            restOfAdsDays = (restOfAds / 5);
-
-            totalDays = ((restOfAdsDays + firstSetDays) + firstSize);
-            ===FORMULA=== 
-        */
-
+        let totalAds = adsPer.value * creatives.value;        
         
         if(!totalAds) {
             totalDays = '0';
@@ -147,17 +163,17 @@
         } else {
             totalDays;
             totalDisplay.textContent = totalAds;
-            firstSetDaysDisplay.textContent = firstSetDays;
+            firstSetDaysDisplay.textContent = '+' + firstSetDays + ' days';
             daysDisplay.textContent = totalDays;
         }
-
-    }
+        
+    }    
     
+    handleBlur();
     
     adsPer.addEventListener('change', handleBlur);
     creatives.addEventListener('change', handleBlur);
-
-    handleBlur();
+    
     
 </script>
 </html>
