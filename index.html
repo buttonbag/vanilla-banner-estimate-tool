@@ -34,13 +34,12 @@
             flex-wrap: wrap;
             justify-content: flex-start;
         }
-        form div.check {
-            display: flex;
-            max-width: 120px;
-            justify-content: flex-start;
-        }
-        form div.check input {
+        form div.checkboxes input {
             width: 20px;
+        }
+        form img {
+            width: 30%;
+            height: 30%;
         }
         form input {
             width: 50px;
@@ -60,21 +59,41 @@
 <body>
     
     <form action="">
-        <h1>Banner Estimator</h1>
-        <div>
-            <label><input type="checkbox" name="" id="">300x250</label>
-            <label><input type="checkbox" name="" id="">160x600</label>
-            <label><input type="checkbox" name="" id="">300x600</label>
-            <label><input type="checkbox" name="" id="">728x90</label>
+        <h1>HTML Banner Estimator</h1>
+        <div class=checkboxes>
+            <label>
+                <input type="checkbox" name="300x250" id="300x250" autocomplete="off"><img src="https://placehold.it/300x250" alt="300x250"><span>300x250</span>
+            </label>
+            <label>
+                <input type="checkbox" name="160x600" id="160x600" autocomplete="off"><img src="https://placehold.it/160x600" alt="160x600"><span>160x600</span>
+            </label>
+            <label>
+                <input type="checkbox" name="120x600" id="120x600" autocomplete="off"><img src="https://placehold.it/120x600" alt="120x600"><span>120x600</span>
+            </label>
+            <label>
+                <input type="checkbox" name="300x600" id="300x600" autocomplete="off"><img src="https://placehold.it/300x600" alt="300x600"><span>300x600</span>
+            </label>
+            <label>
+                <input type="checkbox" name="728x90" id="728x90" autocomplete="off"><img src="https://placehold.it/728x90" alt="728x90"><span>728x90</span>
+            </label>
+            <label>
+                <input type="checkbox" name="970x90" id="970x90" autocomplete="off"><img src="https://placehold.it/970x90" alt="970x90"><span>970x90</span>
+            </label>
+            <label>
+                <input type="checkbox" name="320x50" id="320x50" autocomplete="off"><img src="https://placehold.it/320x50" alt="320x50"><span>320x50</span>
+            </label>
+            <label>
+                <input type="checkbox" name="300x50" id="300x50" autocomplete="off"><img src="https://placehold.it/300x50" alt="300x50"><span>300x50</span>
+            </label>
         </div>
         <hr>
         <div>
-            How many ads per?
+            How many ad sizes?
             <input type="tel" name="adsPer" id="adsPer" autocomplete="off" />
         </div>
         <div>
             How many creatives/partners?
-            <input type="tel" name="creatives" id="creatives" autocomplete="off" />
+            <input type="tel" name="creatives" id="creatives" autocomplete="off" value="1" />
         </div>
         <div>
             Total Ads <span class="totalAds">0</span>
@@ -137,7 +156,7 @@
             adsPer.value = count;
         }
     }
-        
+    
     function handleBlur() {
         const firstSetDays = ((adsPer.value - 1) / 2); // 2 originals per day
         const restOfAds = ((adsPer.value * creatives.value) - adsPer.value); //ads minus first set
@@ -171,7 +190,7 @@
         checks[i].addEventListener('change', countChecked);
         checks[i].addEventListener('change', handleBlur);
     }
-
+    
     adsPer.addEventListener('change', handleBlur);
     creatives.addEventListener('change', handleBlur);
     
