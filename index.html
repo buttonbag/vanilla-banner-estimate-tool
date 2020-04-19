@@ -129,19 +129,15 @@
     function countChecked() {
         if(this.checked) {
             count++;
-            // counter.value = count;
+            adsPer.value = count;
             console.log('checked ' + count);
         } else if(!this.checked) {
             count--;
             console.log('checked ' + count);
-            // counter.value = count;
+            adsPer.value = count;
         }
     }
-    
-    for (i = 0; i < checks.length; i++) {
-        checks[i].addEventListener('change', countChecked);
-    }
-    
+        
     function handleBlur() {
         const firstSetDays = ((adsPer.value - 1) / 2); // 2 originals per day
         const restOfAds = ((adsPer.value * creatives.value) - adsPer.value); //ads minus first set
@@ -171,6 +167,11 @@
     
     handleBlur();
     
+    for (i = 0; i < checks.length; i++) {
+        checks[i].addEventListener('change', countChecked);
+        checks[i].addEventListener('change', handleBlur);
+    }
+
     adsPer.addEventListener('change', handleBlur);
     creatives.addEventListener('change', handleBlur);
     
