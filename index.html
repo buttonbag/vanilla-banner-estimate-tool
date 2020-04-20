@@ -34,6 +34,14 @@
             flex-wrap: wrap;
             justify-content: flex-start;
         }
+        form div.checkboxes div {
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
+        form div.checkboxes label {
+            display: flex;
+            align-items: center;
+        }
         form div.checkboxes input {
             width: 20px;
         }
@@ -60,31 +68,38 @@
     
     <form action="">
         <h1>HTML Banner Estimator</h1>
+        <h4>How long could it possible take for studio to build your ads?</h4>
         <div class=checkboxes>
-            <label>
-                <input type="checkbox" name="300x250" id="300x250" autocomplete="off"><img src="https://placehold.it/300x250" alt="300x250"><span>300x250</span>
-            </label>
-            <label>
-                <input type="checkbox" name="160x600" id="160x600" autocomplete="off"><img src="https://placehold.it/160x600" alt="160x600"><span>160x600</span>
-            </label>
-            <label>
-                <input type="checkbox" name="120x600" id="120x600" autocomplete="off"><img src="https://placehold.it/120x600" alt="120x600"><span>120x600</span>
-            </label>
-            <label>
-                <input type="checkbox" name="300x600" id="300x600" autocomplete="off"><img src="https://placehold.it/300x600" alt="300x600"><span>300x600</span>
-            </label>
-            <label>
-                <input type="checkbox" name="728x90" id="728x90" autocomplete="off"><img src="https://placehold.it/728x90" alt="728x90"><span>728x90</span>
-            </label>
-            <label>
-                <input type="checkbox" name="970x90" id="970x90" autocomplete="off"><img src="https://placehold.it/970x90" alt="970x90"><span>970x90</span>
-            </label>
-            <label>
-                <input type="checkbox" name="320x50" id="320x50" autocomplete="off"><img src="https://placehold.it/320x50" alt="320x50"><span>320x50</span>
-            </label>
-            <label>
-                <input type="checkbox" name="300x50" id="300x50" autocomplete="off"><img src="https://placehold.it/300x50" alt="300x50"><span>300x50</span>
-            </label>
+            <div class="horizontal">
+                <label>
+                    <input type="checkbox" name="728x90" id="728x90" autocomplete="off"><!-- <img src="https://placehold.it/728x90" alt="728x90"> --><span>728x90</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="970x90" id="970x90" autocomplete="off"><!-- <img src="https://placehold.it/970x90" alt="970x90"> --><span>970x90</span>
+                </label>                
+            <!-- </div>
+            <div class="vertical"> -->
+                <label>
+                    <input type="checkbox" name="300x250" id="300x250" autocomplete="off"><!-- <img src="https://placehold.it/300x250" alt="300x250"> --><span>300x250</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="160x600" id="160x600" autocomplete="off"><!-- <img src="https://placehold.it/160x600" alt="160x600"> --><span>160x600</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="120x600" id="120x600" autocomplete="off"><!-- <img src="https://placehold.it/120x600" alt="120x600"> --><span>120x600</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="300x600" id="300x600" autocomplete="off"><!-- <img src="https://placehold.it/300x600" alt="300x600"> --><span>300x600</span>
+                </label>
+            <!-- </div>
+            <div class="mobile"> -->
+                <label>
+                    <input type="checkbox" name="320x50" id="320x50" autocomplete="off"><!-- <img src="https://placehold.it/320x50" alt="320x50"> --><span>320x50</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="300x50" id="300x50" autocomplete="off"><!-- <img src="https://placehold.it/300x50" alt="300x50"> --><span>300x50</span>
+                </label>
+            </div>
         </div>
         <hr>
         <div>
