@@ -31,41 +31,49 @@
             padding: 4px 0;
             /* flex-wrap: wrap; */
         }
-        form div.checkboxes {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+        .checkboxes {
+            display: grid;
+            grid-template-columns: 300px 160px 300px;
+            grid-template-rows: 90px 90px 250px 50px 50px;
+            grid-gap: 12px;
+            transform: scale(.5);
+            transform-origin: top left;
+            width: 0;
+            height: 400px;
+            /* padding: 10px; */
         }
-        form div.checkboxes div {
-            justify-content: flex-start;
-            align-content: flex-start;
-            flex-wrap: wrap;
+        
+        .a {
+            grid-column: 1 / span 3;
+            grid-row: 1;
         }
-        form div.checkboxes div.vertical {
-            justify-content: flex-start;
-            align-content: flex-start;
-            flex-direction: row;
-            flex-wrap: nowrap;
+        .b {
+            grid-column: 1 / span 3;
+            grid-row: 2;
         }
-        form div.checkboxes label {
-            display: flex;
-            align-items: center;
-            margin: 10px;
-            padding: 10px 0;
-            flex-wrap: wrap;
-            background: white;
-            flex: 1 0 auto;
+        .c {
+            grid-row: 3 / span 4;
         }
-        form div.checkboxes label span {
-            flex: 1 0 100%;
-            text-align: center;
+        .d {
+            grid-row: 3 / span 4;
         }
-        form div.checkboxes input {
-            width: 20px;
+        .e {
+            grid-row: 3 ;
         }
-        form img {
-            /* width: 30%;
-            height: 30%; */
+        .f {
+            grid-column: 3;
+            grid-row: 4;
+        }
+        .g {
+            grid-column: 3;
+            grid-row: 5;
+        }
+        
+        img:hover {
+            border: 6px solid #00cfff;
+        }
+        img.selected {
+            border: 6px solid #00abff;
         }
         form input {
             width: 50px;
@@ -87,35 +95,15 @@
     <form action="">
         <h1>HTML Banner Estimator</h1>
         <h4>How long could it possible take for studio to build your ads?</h4>
-        <div class=checkboxes>
-            <div class="horizontal">
-                <label>
-                    <input type="checkbox" name="728x90" id="728x90" autocomplete="off"><img src="https://placehold.it/728x90" alt="728x90"><span>728x90</span>
-                </label>
-                <label>
-                    <input type="checkbox" name="970x90" id="970x90" autocomplete="off"><img src="https://placehold.it/970x90" alt="970x90"><span>970x90</span>
-                </label>                
-            </div>
-            <div class="vertical">
-                <label>
-                    <input type="checkbox" name="300x600" id="300x600" autocomplete="off"><img src="https://placehold.it/300x600" alt="300x600"><span>300x600</span>
-                </label>
-                <label>
-                    <input type="checkbox" name="160x600" id="160x600" autocomplete="off"><img src="https://placehold.it/160x600" alt="160x600"><span>160x600</span>
-                </label>
-                <label>
-                    <input type="checkbox" name="300x250" id="300x250" autocomplete="off"><img src="https://placehold.it/300x250" alt="300x250"><span>300x250</span>
-                </label>
-                <div class="mobile">
-                    <label>
-                        <input type="checkbox" name="320x50" id="320x50" autocomplete="off"><!-- <img src="https://placehold.it/320x50" alt="320x50"> --><span>320x50</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="300x50" id="300x50" autocomplete="off"><!-- <img src="https://placehold.it/300x50" alt="300x50"> --><span>300x50</span>
-                    </label>
-                </div>
-            </div>
-        </div>
+        <div class="checkboxes">
+            <img class="a" src="https://placehold.it/728x90" alt="728x90">
+            <img class="b" src="https://placehold.it/970x90" alt="970x90">
+            <img class="c" src="https://placehold.it/300x600" alt="300x600">
+            <img class="d" src="https://placehold.it/160x600" alt="160x600">
+            <img class="e" src="https://placehold.it/300x250" alt="300x250">
+            <img class="f" src="https://placehold.it/300x50" alt="300x50">
+            <img class="g" src="https://placehold.it/320x50" alt="320x50">
+        </div>        
         <hr>
         <div>
             How many ad sizes?
@@ -170,21 +158,20 @@
     // const creatives = parseInt(document.querySelector('#creatives').value);
     /* don't know why but original const declarations throws error?? */
     
-    const checks = document.querySelectorAll('input[type="checkbox"]');
-    // const counter = document.querySelector('#counter');
-    let count = 0;
-    
-    
-    function countChecked() {
-        if(this.checked) {
-            count++;
-            adsPer.value = count;
-            console.log('checked ' + count);
-        } else if(!this.checked) {
-            count--;
-            console.log('checked ' + count);
-            adsPer.value = count;
-        }
+    const images = document.querySelectorAll('img');
+
+    // click on each to toggle class name
+    function toggleClick() {
+        this.classList.toggle('selected');
+        
+        const selected = document.querySelectorAll('.selected');
+        const selectedCount = selected.length;
+        
+        // count selected images
+        images.forEach(function(){
+            adsPer.value = selectedCount;
+        })
+        handleBlur();
     }
     
     function handleBlur() {
@@ -216,9 +203,10 @@
     
     handleBlur();
     
-    for (i = 0; i < checks.length; i++) {
-        checks[i].addEventListener('change', countChecked);
-        checks[i].addEventListener('change', handleBlur);
+    // addeventlistener to each img
+    for (i = 0; i < images.length; i++) {
+        images[i].addEventListener('click', toggleClick);
+        // images[i].addEventListener('click', countSelected);
     }
     
     adsPer.addEventListener('change', handleBlur);
