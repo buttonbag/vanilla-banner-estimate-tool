@@ -11,4 +11,14 @@
         ===FORMULA=== 
         */
 
-changes here
+breakdown from Olivia:
+
+Day 1: KO
+Day 1-2: Build Master Animation
+Day 3: IR and send to Client
+Day 3-4: Client Review and provide feedback
+Day 5-6: Build out remaining sizes
+Day 7: IR and send to client for review
+Day 8: Implement feedback and send to client for final review
+Day 9: Client Final Approval
+Day 10: Release
