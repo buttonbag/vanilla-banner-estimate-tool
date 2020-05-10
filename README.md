@@ -10,3 +10,5 @@
         totalDays = ((restOfAdsDays + firstSetDays) + firstSize);
         ===FORMULA=== 
         */
+
+changes here
