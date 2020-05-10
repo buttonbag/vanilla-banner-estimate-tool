@@ -5,106 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banner Estimate Tool</title>
     
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            font-size: 18px;
-            line-height: 1.4;
-            font-family: Arial, Helvetica, sans-serif;
-            color: rgb(58, 58, 58);
-            background:rgb(240, 240, 240);
-        }
-        form {
-            max-width: 600px;
-            min-width: 300px;
-        }
-        form h1 {
-            font-size: 2.8em;
-        }
-        form div {
-            display: flex;
-            flex: 1 1 auto;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            padding: 4px 0;
-            /* flex-wrap: wrap; */
-        }
-        .checkboxes {
-            display: grid;
-            grid-template-columns: 300px 160px 300px;
-            grid-template-rows: 90px 90px 250px 50px 50px;
-            grid-gap: 12px;
-            transform: scale(.5);
-            transform-origin: top left;
-            width: 0;
-            height: 400px;
-            /* padding: 10px; */
-        }
-        
-        .a {
-            grid-column: 1 / span 3;
-            grid-row: 1;
-        }
-        .b {
-            grid-column: 1 / span 3;
-            grid-row: 2;
-        }
-        .c {
-            grid-row: 3 / span 4;
-        }
-        .d {
-            grid-row: 3 / span 4;
-        }
-        .e {
-            grid-row: 3 ;
-        }
-        .f {
-            grid-column: 3;
-            grid-row: 4;
-        }
-        .g {
-            grid-column: 3;
-            grid-row: 5;
-        }
-        
-        img:hover {
-            border: 6px solid #00cfff;
-        }
-        img.selected {
-            border: 6px solid #00abff;
-        }
-        form input {
-            width: 50px;
-        }
-        form span.total {
-            font-weight: 600;
-            font-size: 1.2em;
-        }
-        form p.days {
-            font-weight: 600;
-            font-size: 1.2em;
-            color: rgb(185, 32, 32);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
     
+    <h1>HTML Banner Estimator</h1>
+    <h4>How long could it possible take for studio to build your ads?</h4>
+    
     <form action="">
-        <h1>HTML Banner Estimator</h1>
-        <h4>How long could it possible take for studio to build your ads?</h4>
-        <div class="checkboxes">
-            <img class="a" src="https://placehold.it/728x90" alt="728x90">
-            <img class="b" src="https://placehold.it/970x90" alt="970x90">
-            <img class="c" src="https://placehold.it/300x600" alt="300x600">
-            <img class="d" src="https://placehold.it/160x600" alt="160x600">
-            <img class="e" src="https://placehold.it/300x250" alt="300x250">
-            <img class="f" src="https://placehold.it/300x50" alt="300x50">
-            <img class="g" src="https://placehold.it/320x50" alt="320x50">
-        </div>        
-        <hr>
+    <div class="checkboxes">
+        <img class="a" src="https://placehold.it/728x90" alt="728x90">
+        <img class="b" src="https://placehold.it/970x90" alt="970x90">
+        <img class="c" src="https://placehold.it/300x600" alt="300x600">
+        <img class="d" src="https://placehold.it/160x600" alt="160x600">
+        <img class="e" src="https://placehold.it/300x250" alt="300x250">
+        <img class="f" src="https://placehold.it/300x50" alt="300x50">
+        <img class="g" src="https://placehold.it/320x50" alt="320x50">
+    </div>        
+
+    <hr>
         <div>
             How many ad sizes?
             <input type="tel" name="adsPer" id="adsPer" autocomplete="off" />
@@ -117,33 +37,53 @@
             Total Ads <span class="totalAds">0</span>
         </div>        
         <hr>
-        <p>initial ad takes ~2 days including bug discovery and fixes</p>        
         <div>
-            <p>first set of ads</p>
-            <p>2 originals per day</p>
+            <p>Initial ad including bug discovery and fixes:</p>
+            <p>2</p>
+        </div>
+        <div>
+            <p>First set of ads:</p>
+            <p>2 ad resize per day</p>
             <span class="firstSetDaysDisplay">0</span>
         </div>
         <div>
-            <p>Total Days</p>
-            <p>5 ad units per 1 day</p>
+            <p>Total Days:</p>
+            <p>@ 5 ad units per day</p>
             <p class="days">0 days</p>
         </div>    
         <hr>
         
-        <div>
-            Make the first size for approval we would need maybe ~2 days.
-        </div>
-        <div>
-            Once first size is approved, we need 1 more day to create the first of each creatives for approval.            
-        </div>
-        <div>
-            Another __ days to resize the other sizes.
-        </div>
-        <div>
-            IR of first 300x250 - 3 days <br>
-            IR of all 5 300x250s - 1 day <br>
-            Review remaining 15 - 3 days 
-        </div>
+        <!-- <div>
+            <ul>
+                <li>
+                    Day 1: KO
+                </li>
+                <li>
+                    Day 1-2: Build Master Animation
+                </li>
+                <li>
+                    Day 3: IR and send to Client
+                </li>
+                <li>
+                    Day 3-4: Client Review and provide feedback
+                </li>
+                <li>
+                    Day 5-6: Build out remaining sizes
+                </li>
+                <li>
+                    Day 7: IR and send to client for review
+                </li>
+                <li>
+                    Day 8: Implement feedback and send to client for final review
+                </li>
+                <li>
+                    Day 9: Client Final Approval
+                </li>
+                <li>
+                    Day 10: Release
+                </li>
+            </ul>
+        </div> -->
         <div>
             Total time 7 days - not including time waiting for feedback
         </div>
@@ -151,67 +91,5 @@
     
 </body>
 
-<script>
-    const adsPer = document.querySelector('#adsPer');
-    const creatives = document.querySelector('#creatives');
-    // const adsPer = parseInt(document.querySelector('#adsPer').value); 
-    // const creatives = parseInt(document.querySelector('#creatives').value);
-    /* don't know why but original const declarations throws error?? */
-    
-    const images = document.querySelectorAll('img');
-
-    // click on each to toggle class name
-    function toggleClick() {
-        this.classList.toggle('selected');
-        
-        const selected = document.querySelectorAll('.selected');
-        const selectedCount = selected.length;
-        
-        // count selected images
-        images.forEach(function(){
-            adsPer.value = selectedCount;
-        })
-        handleBlur();
-    }
-    
-    function handleBlur() {
-        const firstSetDays = ((adsPer.value - 1) / 2); // 2 originals per day
-        const restOfAds = ((adsPer.value * creatives.value) - adsPer.value); //ads minus first set
-        const restOfAdsDays = (restOfAds / 5);
-        
-        // let totalDays = ((totalAds - 1) / 5) + 2 + ' days';
-        let totalDays = ((restOfAdsDays + firstSetDays) + 2) + ' days';
-        
-        const totalDisplay = document.querySelector('.totalAds');
-        const firstSetDaysDisplay = document.querySelector('.firstSetDaysDisplay');
-        const daysDisplay = document.querySelector('.days');
-        let totalAds = adsPer.value * creatives.value;        
-        
-        if(!totalAds) {
-            totalDays = '0';
-            totalDisplay.textContent = '0';
-            firstSetDaysDisplay.textContent = '0';
-            daysDisplay.textContent = totalDays;
-        } else {
-            totalDays;
-            totalDisplay.textContent = totalAds;
-            firstSetDaysDisplay.textContent = '+' + firstSetDays + ' days';
-            daysDisplay.textContent = totalDays;
-        }
-        
-    }    
-    
-    handleBlur();
-    
-    // addeventlistener to each img
-    for (i = 0; i < images.length; i++) {
-        images[i].addEventListener('click', toggleClick);
-        // images[i].addEventListener('click', countSelected);
-    }
-    
-    adsPer.addEventListener('change', handleBlur);
-    creatives.addEventListener('change', handleBlur);
-    
-    
-</script>
+<script src="script.js"></script>
 </html>
