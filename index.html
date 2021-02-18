@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Estimate Tool</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-    
-    <header>
-        <h1>bnnr.estmtr</h1>
-        <h4>How long could it possible take for studio to build your ads?</h4>
-    </header>
-    
-    <section>
-        <div class="checkboxes">
-            <img class="a" src="https://placehold.it/728x90" alt="728x90">
-            <img class="b" src="https://placehold.it/970x90" alt="970x90">
-            <img class="c" src="https://placehold.it/300x600" alt="300x600">
-            <img class="d" src="https://placehold.it/160x600" alt="160x600">
-            <img class="e" src="https://placehold.it/300x250" alt="300x250">
-            <img class="f" src="https://placehold.it/300x50" alt="300x50">
-            <img class="g" src="https://placehold.it/320x50" alt="320x50">
-        </div>        
-        
-        <form action="">
-            <div>
-                How many ad sizes?
-                <input type="tel" name="adsPer" id="adsPer" autocomplete="off" />
-            </div>
-            <div>
-                How many creatives/partners?
-                <input type="tel" name="creatives" id="creatives" autocomplete="off" value="1" />
-            </div>
-            <div>
-                Total Ads <span class="totalAds">0</span>
-            </div>        
-            <div>
-                <p>Initial ad including bug discovery and fixes:</p>
-                <p>2</p>
-            </div>
-            <div>
-                <p>First set of ads:</p>
-                <p>2 ad resize per day</p>
-                <span class="firstSetDaysDisplay">0</span>
-            </div>
-            <div>
-                <p>Total Days:</p>
-                <p>@ 5 ad units per day</p>
-                <p class="days">0 days</p>
-            </div>    
-            <div>
-                Total time 7 days - not including time waiting for feedback
-            </div>
-        </form>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Banner Estimate Tool</title>
 
-    </section>
-    
-</body>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>bnnr.estmtr</h1>
+			<h4>How long could it possible take for studio to build your ads?</h4>
+		</header>
 
-<script src="script.js"></script>
+		<section>
+			<div class="checkboxes">
+				<img class="a" src="https://placehold.it/728x90" alt="728x90" />
+				<img class="b" src="https://placehold.it/970x90" alt="970x90" />
+				<img class="c" src="https://placehold.it/300x600" alt="300x600" />
+				<img class="d" src="https://placehold.it/160x600" alt="160x600" />
+				<img class="e" src="https://placehold.it/300x250" alt="300x250" />
+				<img class="f" src="https://placehold.it/300x50" alt="300x50" />
+				<img class="g" src="https://placehold.it/320x50" alt="320x50" />
+			</div>
+
+			<form action="">
+				<div>
+					How many ad sizes?
+					<input type="tel" name="adsPer" id="adsPer" autocomplete="off" />
+				</div>
+				<div>
+					How many creatives/partners?
+					<input
+						type="tel"
+						name="creatives"
+						id="creatives"
+						autocomplete="off"
+						value="1"
+					/>
+				</div>
+				<div>Total Ads <span class="totalAds">0</span></div>
+				<div>
+					<p>Initial ad including bug discovery and fixes: 2</p>
+				</div>
+				<div>
+					<p>
+						First set of ads: 2 ad resize per day
+						<span class="firstSetDaysDisplay">0</span>
+					</p>
+				</div>
+				<div>
+					<p>
+						Total Days: @ 5 ad units per day <span class="days">0 days</span>
+						*
+					</p>
+				</div>
+				<div>
+					<p class="legal">
+						* not including time spent on proofreading or for feedback
+						revisions.
+					</p>
+				</div>
+			</form>
+		</section>
+	</body>
+
+	<script src="script.js"></script>
 </html>
